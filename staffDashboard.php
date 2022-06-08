@@ -21,9 +21,9 @@
         <div>
             <label style="float:left;">
 
-            <div class="row">
+                <div class="row">
                 <div class="column">
-                    <h2>ITEM <button type="button" onclick="location.href='additem.php';" name="btnadd" style="margin-right: 5px;" value="Add">Add</button></h2>
+                    <h2>ITEM <button onclick="location.href='additem.php';" name="btnadd" style="margin-right: 5px;" value="Add">Add</button></h2></label>
 
                     <table>
                         <!--INSERT PHP CODE HERE-->
@@ -115,8 +115,7 @@
                     <div class="row">
                         <div class="column">
                             <h2>ITEM REQUEST</h2>
-                            <table>
-
+                        <table>
                         <tr>
                             <tr>
                                 <th>Request ID</th>
@@ -150,12 +149,10 @@
                             ?>      
 
                                     </form>
-                            </table>
-                            <br>
-                            
-                            <br>
+                            </table></br></br>
+
                             <form method="post">
-                            <input type="submit"name="btncancel" style="background: #5f9cd2; color: black; border-radius: 5px;"value="Cancel">
+                            <input type="submit" name="btncancel" style="background: #5f9cd2; color: black; border-radius: 5px;"value="Cancel">
 
                             <select name="dropdown3" id="dropdown_selected">
                             <option value="">-SELECT-</option>
@@ -187,9 +184,8 @@
                                 }
                             ?>
                             </form>
-                        </div>         
-            </div>
+        </div>         
+    </div>
 </body>
-
 </html>
 
