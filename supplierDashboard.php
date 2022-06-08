@@ -203,10 +203,9 @@
                         $expectedPay = $quantityDelivered * $priceHolder;
                         $paymentChange = $payment - $expectedPay;
                         
-                        $insertDelivery = "INSERT INTO deliveryitem (deliveryID, requestID, itemName, quantityDelivered, staff_userName, supplier_userName, paymentChange) 
-                                            VALUES(NULL, '".$requestID."', '".$itemName."', '".$quantityDelivered."', '".$staffUserName."', '".$supplierUsername."', '".$paymentChange."')";
-                        $deleteRequest = "DELETE FROM itemrequests WHERE itemName = '".$postSelected_request."'";
-                        mysqli_query($conn, $insertDelivery);
+                        $insertDelivery = "INSERT INTO deliveryitem VALUES(NULL, '".$requestID."', '".$itemName."', '".$quantityDelivered."', '".$staffUserName."', '".$supplierUsername."', '".$paymentChange."')";
+                        //$deleteRequest = "DELETE FROM itemrequests WHERE itemName = '".$postSelected_request."'";
+                        mysqli_query($conn, $insertDelivery) or die(mysqli_error($conn));
                         echo "<script>alert('Successfully Delivered');  window.location.href = 'supplierDashboard.php';</script>";
                         //mysqli_query($conn, $deleteRequest);
                         

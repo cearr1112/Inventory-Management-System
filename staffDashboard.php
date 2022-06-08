@@ -61,7 +61,7 @@
 
                     <form method="post">
                         <input type="submit" name="btnreq"style="background: #5f9cd2; color: black; border-radius: 5px;"value="Request"> 
-                        <input type="submit" name="btnupdate" style="background: #5f9cd2; color: black; border-radius: 5px;" value="Upadate">
+                        <input type="submit" name="btnupdate" style="background: #5f9cd2; color: black; border-radius: 5px;" value="Update">
                         <input type="submit"name="btndelete" style="background: #5f9cd2; color: black; border-radius: 5px;"value="Delete">
                         <select name="dropdown1" id="dropdown_selected">
                         <option value="">-SELECT-</option>
@@ -100,6 +100,7 @@
                                 $delitems = $_SESSION['itemName'];
                                 $delete = "DELETE FROM `items` WHERE `itemName`='$delitems'";
                                 $resultdel = mysqli_query($con,$delete);
+                                echo "<script>alert('Successfully Deleted an Item');  window.location.href = 'staffDashboard.php';</script>";
                             }else if (isset($_POST['btnreq'])){
                                 $_SESSION['itemName'] = $_POST['dropdown1'];   
                                 header("location: itemrequest.php");
@@ -181,6 +182,7 @@
                                     $delitems = $_SESSION['itemName'];
                                     $delete = "DELETE FROM `itemrequests` WHERE `itemName`='$delitems'";
                                     $resultdel = mysqli_query($con,$delete);
+                                    echo "<script>alert('Successfully Deleted an Item Request');  window.location.href = 'staffDashboard.php';</script>";
                                 }
                             ?>
                             </form>

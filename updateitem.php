@@ -31,6 +31,6 @@
 	$price = $_POST['price'];
     $update = "UPDATE `items` SET `stocks`='$stock',`pricePerStock`='$price',`userName`='$username' WHERE `itemName`='$upitem'";
     $resultadd = mysqli_query($con, $update);
-    header("location: staffdashboard.php");
+    echo "<script>alert('Successfully Updated a Stock');  window.location.href = 'staffDashboard.php';</script>";
 }
  ?>

@@ -33,6 +33,6 @@
 	$price = $_POST['price'];
     $add = "insert into items values('$item','$stock','$price','$username')";
     $resultadd = mysqli_query($con, $add);
-    header("location: staffdashboard.php");
+    echo "<script>alert('Successfully Added an Item');  window.location.href = 'staffDashboard.php';</script>";
 }
  ?>
