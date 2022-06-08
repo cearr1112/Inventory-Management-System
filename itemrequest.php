@@ -53,7 +53,7 @@
 	<label>Quantity</label></br>
 	<input type="text" name="quantity" placeholder="Input Quantity">
     <input type="text" name="payment" placeholder="Input Payment">
-	<input type="submit" name="btnreq" value="Request Item" style="background: #5f9cd2; color: black; border-radius: 5px;">
+	<button type="submit" name="btnreq" style="background: #5f9cd2; color: black; border-radius: 5px;">Request Item</button>
 	</form>
 </body>
 </html>
@@ -65,7 +65,6 @@
                     $upitem = $_SESSION['itemName'];
                     $user = $_SESSION['username'];
                     $price = 0;
-                    echo "<script>alert('".$upitem."');</script";
                     try{
                         if($quantity != null || $payment != null) {
                             $searchPrice = "SELECT pricePerStock FROM items WHERE itemName = '".$upitem."'";
@@ -77,9 +76,8 @@
                             if($payment < $expectedpayment){
                                 throw new Exception("Invalid payment! Payment must be correct.");
                             }else{
-                                $add = "INSERT INTO itemrequests VALUES (NULL,'".$upitem."','".$quantity."','".$payment."','".$user."')";
-                                mysqli_query($conn, $add);
-                                
+                                $add = "INSERT INTO itemrequests VALUES (NULL,'$upitem','$quantity','$payment','$user')";
+                                mysqli_query($conn, $add) or die(mysqli_error($conn));
                                 echo "<script>alert('Successfully Requested'); window.location.href = 'staffDashboard.php';</script>";
                             }
                         }else{
