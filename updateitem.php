@@ -20,7 +20,7 @@
 	<input type="text" name="stock" required><br>
 	<label>Price Per Stock</label><br>
 	<input type="text" name="price" required><br>
-	<input type="submit" name="btnupdate" value="Update">
+	<button style="width: 100%;" type="submit" name="btnupdate" value="Update">Update</button>
 	</form>
 </body>
 </html>
