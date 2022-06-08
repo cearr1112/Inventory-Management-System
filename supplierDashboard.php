@@ -8,7 +8,8 @@
     <body>
     
         <div>
-            <label style="padding-left: 900px;">Welcome <?php session_start(); print_r($_SESSION["username"])?>!</label></br>
+            <label style="margin-right: 1100px;">Welcome <?php session_start(); print_r($_SESSION["username"])?>!</label></br>
+            
             <button style="width: auto;" onclick="location.href='logout.php';" value="logout">Logout</button>
         </div>
         <div class="row">
