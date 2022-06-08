@@ -4,7 +4,6 @@
     // $price =$_SESSION['pricePerStock'];
     $item = $_SESSION['itemName'];
 ?>
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -54,22 +53,22 @@
 	<label>Quantity</label></br>
 	<input type="text" name="quantity" placeholder="Input Quantity">
     <input type="text" name="payment" placeholder="Input Payment">
-	<input type="submit" name="btnreq" style="margin-right: 50px;" value="Request">
+	<button type="submit" name="btnreq" style="margin-right: 135px;">Request Item</button>
 	</form>
 
 	<?php
-
 		if(isset($_POST['btnreq'])){
-			$quantity = $_POST['quantity'];
-            $payment = $_POST['payment'];
-			$upitem = $_SESSION['itemName'];
-			$username = $_SESSION['username'];
                 if($conn){
+                    $quantity = $_POST['quantity'];
+                    $payment = $_POST['payment'];
+                    $upitem = $_SESSION['itemName'];
+                    $username = $_SESSION['username'];
+                    $price = 0;
+                    echo "<script>alert('".$upitem."');</script";
                     try{
                         if($quantity != null || $payment != null) {
                             $searchPrice = "SELECT pricePerStock FROM items WHERE itemName = '".$upitem."'";
                                 $foundPrice = mysqli_query($conn, $searchPrice);
-                                $price = 0;
                                 while($data = mysqli_fetch_assoc($foundPrice)){
                                     $price = $data['pricePerStock'];
                                 }
@@ -77,8 +76,9 @@
                             if($payment < $expectedpayment){
                                 throw new Exception("Invalid payment! Payment must be correct.");
                             }else{
-                                $add = "INSERT INTO itemrequests(requestID, itemName, quantityRequest, payment, userName) VALUES (NULL,'".$upitem."','".$quantity."','".$payment."','".$username."')";
-                                $resultadd = mysqli_query($conn, $add);
+                                $add = "INSERT INTO itemrequests VALUES (NULL,'".$upitem."','".$quantity."','".$payment."','".$username."')";
+                                mysqli_query($conn, $add);
+                                
                                 echo "<script>alert('Successfully Requested'); window.location.href = 'staffDashboard.php';</script>";
                             }
                         }else{
@@ -92,5 +92,3 @@
                 }
 		}  
 	?>
-</body>
-</html>
