@@ -1,9 +1,3 @@
-<?php  
-	session_start();  
-    $conn = mysqli_connect("localhost","root","","inventory_system") or die("Error");
-    // $price =$_SESSION['pricePerStock'];
-    $item = $_SESSION['itemName'];
-?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -15,8 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="StaffD-style.css">
 </head>
 <body>
+<label style="padding-left: 900px;">Welcome <?php session_start(); print_r($_SESSION["username"])?>!</label></br>
 	
-	<form method="post">
 			                    <table>
                         <!--INSERT PHP CODE HERE-->
 
@@ -28,6 +22,12 @@
                                 <th>Username</th>
                             </tr>
 				<?php  
+                $sname= "localhost";
+                $username= "root";
+                $password = "";
+                $db_name = "inventory_system";
+                $conn = mysqli_connect($sname, $username, $password, $db_name);
+                $item = $_SESSION['itemName'];
                                 if($conn){
                                     $query = "SELECT * FROM `items` WHERE `itemName` = '$item' ";
                                     $requests = mysqli_query($conn,$query);//returned results
@@ -49,20 +49,21 @@
                             ?>            
                         </div>
                     </table></br>
-	
+	<form method="post">
 	<label>Quantity</label></br>
 	<input type="text" name="quantity" placeholder="Input Quantity">
     <input type="text" name="payment" placeholder="Input Payment">
-	<button type="submit" name="btnreq" style="margin-right: 135px;">Request Item</button>
+	<input type="submit" name="btnreq" value="Request Item" style="background: #5f9cd2; color: black; border-radius: 5px;">
 	</form>
-
+</body>
+</html>
 	<?php
 		if(isset($_POST['btnreq'])){
                 if($conn){
                     $quantity = $_POST['quantity'];
                     $payment = $_POST['payment'];
                     $upitem = $_SESSION['itemName'];
-                    $username = $_SESSION['username'];
+                    $user = $_SESSION['username'];
                     $price = 0;
                     echo "<script>alert('".$upitem."');</script";
                     try{
@@ -76,7 +77,7 @@
                             if($payment < $expectedpayment){
                                 throw new Exception("Invalid payment! Payment must be correct.");
                             }else{
-                                $add = "INSERT INTO itemrequests VALUES (NULL,'".$upitem."','".$quantity."','".$payment."','".$username."')";
+                                $add = "INSERT INTO itemrequests VALUES (NULL,'".$upitem."','".$quantity."','".$payment."','".$user."')";
                                 mysqli_query($conn, $add);
                                 
                                 echo "<script>alert('Successfully Requested'); window.location.href = 'staffDashboard.php';</script>";
