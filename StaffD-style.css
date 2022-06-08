@@ -20,16 +20,15 @@ h1 {
 input {
     display: block;
     border: 2px solid #ccc;
-    width: 100%;
+    width: auto;
     padding: 10px;
     margin: 10px auto;
-    border-radius: 5px;
 }
 
 label {
-    color: #888;
+    color: black;
     font-size: 18px;
-    padding: 10px;
+    padding: auto;
 }
 
 select {
@@ -66,11 +65,6 @@ button:hover {
     margin: 20px auto;
 }
 
-h2 {
-    text-align: left;
-    margin-left: 0px;
-}
-
 a {
     float: left;
     padding: 5px 10px;
@@ -91,8 +85,7 @@ table {
     border: 1px solid #ddd;
 }
 
-th,
-td {
+th, td {
     border: 1px solid black;
     background-color: #96D4D4;
     text-align: center;
@@ -107,9 +100,5 @@ td {
 
 .column {
     flex: 30%;
-    padding: 5px;
-}
-
-.button {
     padding: 5px;
 }
