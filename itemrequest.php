@@ -10,7 +10,7 @@
 </head>
 <body>
 <label style="padding-left: 900px;">Welcome <?php session_start(); print_r($_SESSION["username"])?>!</label></br>
-	
+<form method="post">
 			                    <table>
                         <!--INSERT PHP CODE HERE-->
 
@@ -49,11 +49,10 @@
                             ?>            
                         </div>
                     </table></br>
-	<form method="post">
 	<label>Quantity</label></br>
 	<input type="text" name="quantity" placeholder="Input Quantity">
     <input type="text" name="payment" placeholder="Input Payment">
-	<button type="submit" name="btnreq" style="background: #5f9cd2; color: black; border-radius: 5px;">Request Item</button>
+	<input type="submit" name="btnreq" placeholder = "Request Item" style="background: #5f9cd2; color: black; border-radius: 5px;">
 	</form>
 </body>
 </html>
@@ -76,7 +75,7 @@
                             if($payment < $expectedpayment){
                                 throw new Exception("Invalid payment! Payment must be correct.");
                             }else{
-                                $add = "INSERT INTO itemrequests VALUES (NULL,'$upitem','$quantity','$payment','$user')";
+                                $add = "INSERT INTO itemrequests VALUES (NULL,'".$upitem."','".$quantity."','".$payment."','".$user."')";
                                 mysqli_query($conn, $add) or die(mysqli_error($conn));
                                 echo "<script>alert('Successfully Requested'); window.location.href = 'staffDashboard.php';</script>";
                             }
@@ -85,7 +84,7 @@
                         }
                     }catch(Exception $e){
                         echo "<script>alert('".$e->getMessage()."');</script>";
-                    }	
+                    }
                 }else{
                     echo "<script>alert('Connection failed');</script>";
                 }
